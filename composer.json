@@ -1,0 +1,14 @@
+{
+    "name": "ebcms/plugin",
+    "description": "插件系统",
+    "type": "ebcms-app",
+    "license": "Apache-2.0",
+    "require": {
+        "ebcms/admin": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Ebcms\\Plugin\\": "src/library/"
+        }
+    }
+}
