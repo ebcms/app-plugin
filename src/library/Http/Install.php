@@ -6,7 +6,7 @@ namespace App\Ebcms\Plugin\Http;
 
 use App\Ebcms\Admin\Http\Common;
 use Ebcms\App;
-use Ebcms\RequestFilter;
+use Ebcms\Request;
 
 use function Composer\Autoload\includeFile;
 
@@ -14,9 +14,9 @@ class Install extends Common
 {
     public function post(
         App $app,
-        RequestFilter $input
+        Request $request
     ) {
-        $name = $input->post('name');
+        $name = $request->post('name');
 
         $install_lock = $app->getAppPath() . '/config/plugin/' . $name . '/install.lock';
         if (file_exists($install_lock)) {

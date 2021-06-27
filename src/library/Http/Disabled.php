@@ -6,16 +6,16 @@ namespace App\Ebcms\Plugin\Http;
 
 use App\Ebcms\Admin\Http\Common;
 use Ebcms\App;
-use Ebcms\RequestFilter;
+use Ebcms\Request;
 
 class Disabled extends Common
 {
 
     public function post(
         App $app,
-        RequestFilter $input
+        Request $request
     ) {
-        $name = $input->post('name');
+        $name = $request->post('name');
 
         $install_lock = $app->getAppPath() . '/config/plugin/' . $name . '/install.lock';
         if (!file_exists($install_lock)) {
@@ -23,7 +23,7 @@ class Disabled extends Common
         }
 
         $disabled_file = $app->getAppPath() . '/config/plugin/' . $name . '/disabled.lock';
-        if ($input->post('disabled')) {
+        if ($request->post('disabled')) {
             if (!file_exists($disabled_file)) {
                 if (!is_dir(dirname($disabled_file))) {
                     mkdir(dirname($disabled_file), 0755, true);

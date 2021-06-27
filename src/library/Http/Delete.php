@@ -7,7 +7,7 @@ namespace App\Ebcms\Plugin\Http;
 use App\Ebcms\Admin\Http\Common;
 use App\Ebcms\Plugin\Traits\DirTrait;
 use Ebcms\App;
-use Ebcms\RequestFilter;
+use Ebcms\Request;
 
 class Delete extends Common
 {
@@ -15,9 +15,9 @@ class Delete extends Common
 
     public function post(
         App $app,
-        RequestFilter $input
+        Request $request
     ) {
-        $name = $input->post('name');
+        $name = $request->post('name');
         $install_lock = $app->getAppPath() . '/config/plugin/' . $name . '/install.lock';
         if (file_exists($install_lock)) {
             return $this->failure('请先卸载！');
