@@ -1,6 +1,5 @@
 {include common/header@ebcms/admin}
-<div class="my-4 display-4">插件</div>
-<hr>
+<div class="my-4 h1">插件</div>
 <script>
     function change(name, disabled) {
         $.ajax({
@@ -105,7 +104,7 @@
             {/if}
         </div>
         <div class="flex-fill">
-            <h6 class="mt-0 mb-1">{$vo['title']??$name}</h6>
+            <div class="mt-0 mb-1"><strong>{$vo['title']??$name}</strong></div>
             <div class="text-muted">{$vo['description']??'暂无介绍'}</div>
             <div>
                 {if $vo['_install']}
